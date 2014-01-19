@@ -1,6 +1,6 @@
 package ashley.tests.utils;
 
-import ashley.utils.ObjectMap;
+import com.badlogic.gdx.utils.ObjectMap;
 
 /**
  * A simple Timer class that let's you measure multiple times and are identified via an id.
@@ -9,11 +9,11 @@ import ashley.utils.ObjectMap;
  */
 public class Timer {
 	private ObjectMap<String, Long> times;
-	
+
 	public Timer(){
 		times = new ObjectMap<String, Long>();
 	}
-	
+
 	/**
 	 * Start tracking a time with name as id.
 	 * @param name The timer's id
@@ -21,8 +21,8 @@ public class Timer {
 	public void start(String name){
 		times.put(name, System.currentTimeMillis());
 	}
-	
-	
+
+
 	/**
 	 * Stop tracking the specified id
 	 * @param name The timer's id
