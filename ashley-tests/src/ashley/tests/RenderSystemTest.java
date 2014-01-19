@@ -7,7 +7,6 @@ import ashley.tests.components.PositionComponent;
 import ashley.tests.components.VisualComponent;
 import ashley.tests.systems.MovementSystem;
 import ashley.tests.systems.RenderSystem;
-
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
@@ -24,34 +23,34 @@ public class RenderSystemTest {
 		config.width = 640;
 		config.height = 480;
 		config.useGL20 = true;
-		
+
 		new LwjglApplication(new MainClass(), config);
 	}
-	
+
 	public static class MainClass extends ApplicationAdapter {
 		PooledEngine engine;
-		
+
 		@Override
 		public void create() {
 			OrthographicCamera camera = new OrthographicCamera(640, 480);
 			camera.position.set(320, 240, 0);
 			camera.update();
-			
+
 			Texture crateTexture = new Texture("assets/crate.png");
 			Texture coinTexture = new Texture("assets/coin.png");
-			
+
 			engine = new PooledEngine();
 			engine.addSystem(new RenderSystem(camera));
 			engine.addSystem(new MovementSystem());
-			
+
 			Entity crate = engine.createEntity();
 			crate.add(new PositionComponent(50, 50));
 			crate.add(new VisualComponent(new TextureRegion(crateTexture)));
 
 			engine.addEntity(crate);
-			
+
 			TextureRegion coinRegion = new TextureRegion(coinTexture);
-			
+
 			for(int i=0; i<100; i++){
 				Entity coin = engine.createEntity();
 				coin.add(new PositionComponent(MathUtils.random(640), MathUtils.random(480)));
@@ -65,7 +64,7 @@ public class RenderSystemTest {
 		public void render() {
 			Gdx.gl.glClearColor(0, 0, 0, 1);
 			Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-			
+
 			engine.update(Gdx.graphics.getDeltaTime());
 		}
 	}

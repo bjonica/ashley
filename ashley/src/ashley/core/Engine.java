@@ -1,7 +1,5 @@
 package ashley.core;
 
-import java.util.Comparator;
-
 import ashley.signals.Listener;
 import ashley.signals.Signal;
 import com.badlogic.gdx.utils.Array;
@@ -9,6 +7,8 @@ import com.badlogic.gdx.utils.IntMap;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.ObjectMap.Entries;
 import com.badlogic.gdx.utils.ObjectMap.Entry;
+
+import java.util.Comparator;
 
 /**
  * The Engine class is the heart of the Entity framework. It is responsible for keeping track of entities and

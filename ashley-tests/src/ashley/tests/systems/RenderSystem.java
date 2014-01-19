@@ -6,11 +6,10 @@ import ashley.core.EntitySystem;
 import ashley.core.Family;
 import ashley.tests.components.PositionComponent;
 import ashley.tests.components.VisualComponent;
-import com.badlogic.gdx.utils.IntMap;
-import com.badlogic.gdx.utils.IntMap.Keys;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.IntMap;
+import com.badlogic.gdx.utils.IntMap.Keys;
 
 public class RenderSystem extends EntitySystem {
 	private IntMap<Entity> entities;

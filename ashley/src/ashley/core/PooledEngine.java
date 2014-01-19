@@ -1,8 +1,8 @@
 package ashley.core;
 
 import com.badlogic.gdx.utils.Pool;
-import com.badlogic.gdx.utils.Pools;
 import com.badlogic.gdx.utils.Pool.Poolable;
+import com.badlogic.gdx.utils.Pools;
 
 /**
  * Engine derived class adding Entity and Component pooling. This improves performance in environments

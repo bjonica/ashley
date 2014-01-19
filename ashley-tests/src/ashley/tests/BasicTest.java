@@ -1,10 +1,6 @@
 package ashley.tests;
 
-import ashley.core.Engine;
-import ashley.core.Entity;
-import ashley.core.EntitySystem;
-import ashley.core.Family;
-import ashley.core.PooledEngine;
+import ashley.core.*;
 import ashley.tests.components.MovementComponent;
 import ashley.tests.components.PositionComponent;
 import com.badlogic.gdx.utils.IntMap;
