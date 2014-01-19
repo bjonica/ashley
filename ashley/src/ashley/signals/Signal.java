@@ -1,20 +1,20 @@
 package ashley.signals;
 
-import ashley.utils.Array;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * A Signal is a basic event class then can dispatch an event to multiple listeners. It uses
  * generics to allow any type of object to be passed around on dispatch.
- * 
+ *
  * @author Stefan Bachmann
  */
 public class Signal<T> {
 	private Array<Listener<T>> listeners;
-	
+
 	public Signal(){
 		listeners = new Array<Listener<T>>();
 	}
-	
+
 	/**
 	 * Add a Listener to this Signal
 	 * @param listener The Listener to be added
@@ -22,7 +22,7 @@ public class Signal<T> {
 	public void add(Listener<T> listener){
 		listeners.add(listener);
 	}
-	
+
 	/**
 	 * Remove a listener from this Signal
 	 * @param listener The Listener to remove
@@ -30,7 +30,7 @@ public class Signal<T> {
 	public void remove(Listener<T> listener){
 		listeners.removeValue(listener, true);
 	}
-	
+
 	/**
 	 * Dispatches an event to all Listeners registered to this Signal
 	 * @param object The object to send off
