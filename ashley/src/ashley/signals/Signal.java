@@ -9,7 +9,7 @@ import com.badlogic.gdx.utils.Array;
  * @author Stefan Bachmann
  */
 public class Signal<T> {
-	private Array<Listener<T>> listeners;
+	private final Array<Listener<T>> listeners;
 
 	public Signal(){
 		listeners = new Array<Listener<T>>();

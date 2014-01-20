@@ -13,7 +13,7 @@ import com.badlogic.gdx.utils.ObjectMap;
  */
 public class ComponentType {
 	/** Hashmap to keep track of all Component subclasses hashed by their Class */
-	private static ObjectMap<Class<? extends Component>, ComponentType> componentTypes = new ObjectMap<Class<? extends Component>, ComponentType>();
+	private static final ObjectMap<Class<? extends Component>, ComponentType> componentTypes = new ObjectMap<Class<? extends Component>, ComponentType>();
 	private static int typeIndex = 0;
 
 	/** This ComponentType's unique index */
@@ -47,7 +47,7 @@ public class ComponentType {
     }
 
     /**
-     * Returns the unique ComponentType index for a specific Component Class. Basically a quikc helper
+     * Returns the unique ComponentType index for a specific Component Class. Basically a quick helper
      * method. The same could be done via getTypeFor().
      * @param componentType The Component class
      * @return The index for the specified Component Class

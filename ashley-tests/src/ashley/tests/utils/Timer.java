@@ -8,7 +8,7 @@ import com.badlogic.gdx.utils.ObjectMap;
  *
  */
 public class Timer {
-	private ObjectMap<String, Long> times;
+	private final ObjectMap<String, Long> times;
 
 	public Timer(){
 		times = new ObjectMap<String, Long>();

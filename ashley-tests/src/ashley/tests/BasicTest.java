@@ -86,7 +86,7 @@ public class BasicTest {
 		}
 	}
 
-	public static void log(String string){
+	private static void log(String string){
 		System.out.println(string);
 	}
 }

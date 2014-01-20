@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.IntMap.Keys;
  */
 public abstract class IteratingSystem extends EntitySystem {
 	/** The family describing this systems entities */
-	private Family family;
+	private final Family family;
 	/** The entities used by this system */
 	private IntMap<Entity> entities;
 
@@ -61,7 +61,7 @@ public abstract class IteratingSystem extends EntitySystem {
 
 	/**
 	 * This method is called on every entity on every update call of the EntitySystem. Override this to implement
-	 * your system's specific processeing.
+	 * your system's specific processing.
 	 * @param entity The current Entity being processed
 	 * @param deltaTime The delta time between the last and current frame
 	 */

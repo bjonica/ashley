@@ -16,7 +16,7 @@ import com.badlogic.gdx.utils.Pools;
  */
 public class PooledEngine extends Engine {
 
-	private EntityPool entityPool;
+	private final EntityPool entityPool;
 
 	public PooledEngine() {
 		super();

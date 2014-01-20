@@ -14,8 +14,8 @@ import com.badlogic.gdx.utils.IntMap.Keys;
 public class RenderSystem extends EntitySystem {
 	private IntMap<Entity> entities;
 
-	private SpriteBatch batch;
-	private OrthographicCamera camera;
+	private final SpriteBatch batch;
+	private final OrthographicCamera camera;
 
 	public RenderSystem(OrthographicCamera camera){
 		batch = new SpriteBatch();
@@ -28,12 +28,7 @@ public class RenderSystem extends EntitySystem {
 		entities = engine.getEntitiesFor(Family.getFamilyFor(PositionComponent.class, VisualComponent.class));
 	}
 
-	@Override
-	public void removedFromEngine(Engine engine) {
-
-	}
-
-	@Override
+    @Override
 	public void update(float deltaTime) {
 		PositionComponent position;
 		VisualComponent visual;

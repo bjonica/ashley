@@ -24,16 +24,16 @@ import java.util.Comparator;
  * @author Stefan Bachmann
  */
 public class Engine {
-	private static SystemComparator comparator = new SystemComparator();
+	private static final SystemComparator comparator = new SystemComparator();
 
 	/** An unordered array that holds all entities in the Engine */
-	private Array<Entity> entities;
+	private final Array<Entity> entities;
 	/** An unordered list of EntitySystem */
-	private Array<EntitySystem> systems;
+	private final Array<EntitySystem> systems;
 	/** A hashmap that organises EntitySystems by class for easy retrieval */
-	private ObjectMap<Class<?>, EntitySystem> systemsByClass;
+	private final ObjectMap<Class<?>, EntitySystem> systemsByClass;
 	/** A hashmap that organises all entities into family buckets */
-	private ObjectMap<Family, IntMap<Entity>> families;
+	private final ObjectMap<Family, IntMap<Entity>> families;
 
 	/** A listener for the Engine that's called everytime a component is added. */
 	private final Listener<Entity> componentAdded;

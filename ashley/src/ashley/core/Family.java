@@ -17,7 +17,7 @@ import java.util.BitSet;
  */
 public class Family {
 	/** The hashmap holding all families */
-	private static ObjectMap<String, Family> families = new ObjectMap<String, Family>();
+	private static final ObjectMap<String, Family> families = new ObjectMap<String, Family>();
 	private static int familyIndex = 0;
 
 	/** A bitset used for quick comparison between families & entities */
@@ -67,9 +67,9 @@ public class Family {
 	public static Family getFamilyFor(Class<? extends Component> ...componentTypes){
 		BitSet bits = new BitSet();
 
-		for(int i=0; i<componentTypes.length; i++){
-			bits.set(ComponentType.getIndexFor(componentTypes[i]));
-		}
+        for (Class<? extends Component> componentType : componentTypes) {
+            bits.set(ComponentType.getIndexFor(componentType));
+        }
 
 		String hash = bits.toString();
 		Family family = families.get(hash, null);
@@ -83,11 +83,6 @@ public class Family {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Family){
-			if(obj == this)
-				return true;
-			else return bits.equals(((Family)obj).bits);
-		}
-		return false;
-	}
+        return obj instanceof Family && (obj == this || bits.equals(((Family) obj).bits));
+    }
 }

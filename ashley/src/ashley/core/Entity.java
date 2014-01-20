@@ -22,18 +22,18 @@ public class Entity {
 	private int index;
 
 	/** The hashmap that holds all the components hashed via their class type */
-	private ObjectMap<Class<? extends Component>, Component> components;
+	private final ObjectMap<Class<? extends Component>, Component> components;
 	/** A bitset describing all the components in this entity. For quick matching. */
-	private BitSet componentBits;
+	private final BitSet componentBits;
 	/** A bitset describing all the systems this entity was matched with. */
-	private BitSet familyBits;
+	private final BitSet familyBits;
 	/** A flag that can be used to bit mask this entity. Up to the user to manage. */
 	public int flags;
 
 	/** Will dispatch an event when a component is added. */
-	public Signal<Entity> componentAdded;
+	public final Signal<Entity> componentAdded;
 	/** Will dispatch an event when a component is removed. */
-	public Signal<Entity> componentRemoved;
+	public final Signal<Entity> componentRemoved;
 
 	/**
 	 * Creates an empty Entity.

@@ -9,7 +9,7 @@ import ashley.tests.utils.Timer;
 import com.badlogic.gdx.utils.Array;
 
 public class SpeedTest {
-	public static int NUMBER_ENTITIES = 100000;
+	public static final int NUMBER_ENTITIES = 100000;
 
 	public static void main(String[] args){
 		Timer timer = new Timer();
