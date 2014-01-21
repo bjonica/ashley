@@ -36,7 +36,7 @@ public abstract class IteratingSystem extends EntitySystem {
 	 */
 	public IteratingSystem(Family family, int priority){
 		super(priority);
-
+        this.entities = new IntMap<Entity>();
 		this.family = family;
 	}
 
