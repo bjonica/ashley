@@ -5,7 +5,6 @@ import ashley.signals.Signal;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.IntMap;
 import com.badlogic.gdx.utils.ObjectMap;
-import com.badlogic.gdx.utils.ObjectMap.Entries;
 import com.badlogic.gdx.utils.ObjectMap.Entry;
 
 import java.util.Comparator;
@@ -68,10 +67,8 @@ public class Engine {
 	public void addEntity(Entity entity){
 		entities.add(entity);
 
-		ObjectMap.Entries<Family, IntMap<Entity>> entries = families.entries();
-		while(entries.hasNext){
-			ObjectMap.Entry<Family, IntMap<Entity>> entry = entries.next();
-			if(entry.key.matches(entity)){
+		for(Entry<Family, IntMap<Entity>> entry: families.entries()) {
+			if(entry.key.matches(entity)) {
 				entry.value.put(entity.getIndex(), entity);
 				entity.getFamilyBits().set(entry.key.getFamilyIndex());
 			}
@@ -89,9 +86,7 @@ public class Engine {
 		entities.removeValue(entity, true);
 
 		if(!entity.getFamilyBits().isEmpty()){
-			ObjectMap.Entries<Family, IntMap<Entity>> entries = families.entries();
-			while(entries.hasNext){
-				ObjectMap.Entry<Family, IntMap<Entity>> entry = entries.next();
+			for(Entry<Family, IntMap<Entity>> entry : families.entries()) {
 				if(entry.key.matches(entity)){
 					entry.value.remove(entity.getIndex());
 					entity.getFamilyBits().clear(entry.key.getFamilyIndex());
@@ -143,14 +138,13 @@ public class Engine {
 	 * @return An IntMap of Entities
 	 */
 	public IntMap<Entity> getEntitiesFor(Family family){
-		IntMap<Entity> entities = families.get(family, null);
-		if(entities == null){
-			entities = new IntMap<Entity>();
+		if(families.get(family, null) == null){
+			IntMap<Entity> entityIntMap = new IntMap<Entity>();
 			for(Entity e:this.entities){
 				if(family.matches(e))
-					entities.put(e.getIndex(), e);
+					entityIntMap.put(e.getIndex(), e);
 			}
-			families.put(family, entities);
+			families.put(family, entityIntMap);
 		}
 		return families.get(family);
 	}
@@ -160,11 +154,9 @@ public class Engine {
 	 * @param entity The Entity that had a component added to
 	 */
 	private void componentAdded(Entity entity){
-		Entries<Family, IntMap<Entity>> entries = families.entries();
-		while(entries.hasNext){
-			Entry<Family, IntMap<Entity>> entry = entries.next();
+		for(Entry<Family, IntMap<Entity>> entry : families.entries()) {
 			if(!entity.getFamilyBits().get(entry.key.getFamilyIndex())){
-				if(entry.key.matches(entity)){
+				if (entry.key.matches(entity)) {
 					entry.value.put(entity.getIndex(), entity);
 					entity.getFamilyBits().set(entry.key.getFamilyIndex());
 				}
@@ -178,11 +170,9 @@ public class Engine {
 	 * @param entity The Entity that had a component removed from
 	 */
 	private void componentRemoved(Entity entity){
-		Entries<Family, IntMap<Entity>> entries = families.entries();
-		while(entries.hasNext){
-			Entry<Family, IntMap<Entity>> entry = entries.next();
-			if(entity.getFamilyBits().get(entry.key.getFamilyIndex())){
-				if(!entry.key.matches(entity)){
+		for(Entry<Family, IntMap<Entity>> entry : families.entries()) {
+			if(entity.getFamilyBits().get(entry.key.getFamilyIndex())) {
+				if (!entry.key.matches(entity)) {
 					entry.value.remove(entity.getIndex());
 					entity.getFamilyBits().clear(entry.key.getFamilyIndex());
 				}
@@ -195,8 +185,8 @@ public class Engine {
 	 * @param deltaTime The time passed since the last frame
 	 */
 	public void update(float deltaTime){
-		for(int i=0; i<systems.size; i++){
-			systems.get(i).update(deltaTime);
+		for(EntitySystem system : systems) {
+			system.update(deltaTime);
 		}
 	}
 
